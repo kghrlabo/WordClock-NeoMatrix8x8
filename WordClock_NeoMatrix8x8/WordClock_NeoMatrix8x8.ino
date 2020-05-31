@@ -141,9 +141,17 @@ void setup() {
   Serial.println(WiFi.localIP());
 
   // Config NTP 
-  // If you need a DST, please extend it here.
-  configTime( gmtOffset_sec, daylightOffset_sec, ntpServer);
-
+  configTime( gmtOffset_sec, 0, ntpServer);
+   
+  // When you are in/out DST, please reboot this WORD CLOCK to apply daylightOffset_sec.
+  if (daylightOffset_sec != 0) {
+    if (checkDst() == true) { // check whether we're in DST right now. If we are, subtract an hour.
+      configTime( gmtOffset_sec, daylightOffset_sec, ntpServer);
+    }
+  }
+  getTheTime();
+  Serial.println(&theTime, "%A, %B %d %Y %H:%M:%S");
+   
   // startup sequence... do colorwipe?
   // delay(500);
   // rainbowCycle(20);
@@ -155,6 +163,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
+  getTheTime();
   adjustBrightness();
   displayTime();
 
