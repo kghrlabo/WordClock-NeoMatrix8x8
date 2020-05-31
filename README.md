@@ -1,6 +1,6 @@
  WORD CLOCK - NeoMatrix 8x8 ESP32&NTP Edition
 ================
-by [kghr labo]
+by [kghr labo](https://xxxxxx)
 Original by [Andy Doro](https://andydoro.com/) & [Dano Wall](https://github.com/danowall)
 
 
