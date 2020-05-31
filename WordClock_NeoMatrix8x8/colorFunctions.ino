@@ -6,16 +6,15 @@ void applyMask() {
     boolean masker = bitRead(mask, 63 - i); // bitread is backwards because bitRead reads rightmost digits first. could have defined the word masks differently
     switch (masker) {
       case 0:
-        matrix.setPixelColor(i, 0, 0, 0);
+        leds[i] = CRGB( 0, 0, 0);
         break;
       case 1:
-        matrix.setPixelColor(i, Wheel(((i * 256 / matrix.numPixels()) + j) & 255));
-        //matrix.setPixelColor(i, WHITE);
+        leds[i]=Wheel(((i * 256 / NUM_LEDS) + j) & 255);
         break;
     }
   }
 
-  matrix.show(); // show it!
+  FastLED.show(); // show it!
   delay(SHIFTDELAY);
   j++; // move the colors forward
   j = j % (256 * 5);
@@ -32,13 +31,13 @@ uint32_t Wheel(byte WheelPos) {
   uint32_t wheelColor;
 
   if (WheelPos < 85) {
-    wheelColor = matrix.Color(255 - WheelPos * 3, 0, WheelPos * 3);
+    wheelColor = mColor(255 - WheelPos * 3, 0, WheelPos * 3);
   } else if (WheelPos < 170) {
     WheelPos -= 85;
-    wheelColor = matrix.Color(0, WheelPos * 3, 255 - WheelPos * 3);
+    wheelColor = mColor(0, WheelPos * 3, 255 - WheelPos * 3);
   } else {
     WheelPos -= 170;
-    wheelColor = matrix.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
+    wheelColor = mColor(WheelPos * 3, 255 - WheelPos * 3, 0);
   }
 
   // convert from 24-bit to 16-bit color - NeoMatrix requires 16-bit. perhaps there's a better way to do this.
@@ -58,11 +57,17 @@ void rainbowCycle(uint8_t wait) {
   uint16_t i, j;
 
   for (j = 0; j < 256 * 5; j++) { // 5 cycles of all colors on wheel
-    for (i = 0; i < matrix.numPixels(); i++) {
-      matrix.setPixelColor(i, Wheel(((i * 256 / matrix.numPixels()) + j) & 255));
+    for (i = 0; i < NUM_LEDS; i++) {
+      leds[i]=Wheel(((i * 256 / NUM_LEDS) + j) & 255);
     }
-    matrix.show();
+    FastLED.show(); // show it!
     delay(wait);
   }
 }
+
+// 
+uint16_t mColor(uint8_t r, uint8_t g, uint8_t b) {
+  return ((uint16_t)(r & 0xF8) << 8) | ((uint16_t)(g & 0xFC) << 3) | (b >> 3);
+}
+
 
