@@ -3,25 +3,8 @@
 
 void displayTime(void) {
 
-  // get time from the RTC
-  //DateTime theTime = RTC.now();
-  //theTime = calculateTime(); // takes into account DST
-
   // serial print current time
-  /*
-  Serial.print(theTime.year(), DEC);
-  Serial.print('/');
-  Serial.print(theTime.month(), DEC);
-  Serial.print('/');
-  Serial.print(theTime.day(), DEC);
-  Serial.print(' ');
-  Serial.print(theTime.hour(), DEC);
-  Serial.print(':');
-  Serial.print(theTime.minute(), DEC);
-  Serial.print(':');
-  Serial.print(theTime.second(), DEC);
-  Serial.println();
-  */
+  //Serial.println(&theTime, "%A, %B %d %Y %H:%M:%S");
 
   // time we display the appropriate theTime.minute() counter
   if ((theTime.minute() > 4) && (theTime.minute() < 10)) {
