@@ -5,58 +5,58 @@ void displayTime(void) {
 
   // serial print current time
   //Serial.println(&theTime, "%A, %B %d %Y %H:%M:%S");
-
+  
   // time we display the appropriate theTime.minute() counter
-  if ((theTime.minute() > 4) && (theTime.minute() < 10)) {
+  if ((theTime.tm_min > 4) && (theTime.tm_min < 10)) {
     MFIVE;
     //Serial.print("five");
   }
-  if ((theTime.minute() > 9) && (theTime.minute() < 15)) {
+  if ((theTime.tm_min > 9) && (theTime.tm_min < 15)) {
     MTEN;
     //Serial.print("ten");
   }
-  if ((theTime.minute() > 14) && (theTime.minute() < 20)) {
+  if ((theTime.tm_min > 14) && (theTime.tm_min < 20)) {
     AQUARTER;
     //Serial.print("a quarter");
   }
-  if ((theTime.minute() > 19) && (theTime.minute() < 25)) {
+  if ((theTime.tm_min > 19) && (theTime.tm_min < 25)) {
     TWENTY;
     //Serial.print("twenty");
   }
-  if ((theTime.minute() > 24) && (theTime.minute() < 30)) {
+  if ((theTime.tm_min > 24) && (theTime.tm_min < 30)) {
     TWENTY;
     MFIVE;
     //Serial.print("twenty five");
   }
-  if ((theTime.minute() > 29) && (theTime.minute() < 35)) {
+  if ((theTime.tm_min > 29) && (theTime.tm_min < 35)) {
     HALF;
     //Serial.print("half");
   }
-  if ((theTime.minute() > 34) && (theTime.minute() < 40)) {
+  if ((theTime.tm_min > 34) && (theTime.tm_min < 40)) {
     TWENTY;
     MFIVE;
     //Serial.print("twenty five");
   }
-  if ((theTime.minute() > 39) && (theTime.minute() < 45)) {
+  if ((theTime.tm_min > 39) && (theTime.tm_min < 45)) {
     TWENTY;
     //Serial.print("twenty");
   }
-  if ((theTime.minute() > 44) && (theTime.minute() < 50)) {
+  if ((theTime.tm_min > 44) && (theTime.tm_min < 50)) {
     AQUARTER;
     //Serial.print("a quarter");
   }
-  if ((theTime.minute() > 49) && (theTime.minute() < 55)) {
+  if ((theTime.tm_min > 49) && (theTime.tm_min < 55)) {
     MTEN;
     //Serial.print("ten");
   }
-  if (theTime.minute() > 54) {
+  if (theTime.tm_min > 54) {
     MFIVE;
     //Serial.print("five");
   }
 
-  if ((theTime.minute() < 5))
+  if ((theTime.tm_min < 5))
   {
-    switch (theTime.hour()) {
+    switch (theTime.tm_hour) {
       case 1:
       case 13:
         ONE;
@@ -108,11 +108,11 @@ void displayTime(void) {
     }
 
   }
-  else if ((theTime.minute() < 35) && (theTime.minute() > 4))
+  else if ((theTime.tm_min < 35) && (theTime.tm_min > 4))
   {
     PAST;
     //Serial.print(" past ");
-    switch (theTime.hour()) {
+    switch (theTime.tm_hour) {
       case 1:
       case 13:
         ONE;
@@ -169,7 +169,7 @@ void displayTime(void) {
     // the next hour, as we will be displaying a 'to' sign
     TO;
     //Serial.print(" to ");
-    switch (theTime.hour()) {
+    switch (theTime.tm_hour) {
       case 1:
       case 13:
         TWO;
@@ -223,12 +223,3 @@ void displayTime(void) {
   applyMask(); // apply phrase mask to colorshift function
 
 }
-
-
-
-
-
-
-
-
-
