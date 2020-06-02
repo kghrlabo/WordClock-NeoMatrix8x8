@@ -43,7 +43,9 @@ grid pattern:
  ```
  
  Tape LED layout:
--------
+ -------
+ 
+ ```
    |== ESP32 Dev kit
    |
  0 X--X--X--X--X--X--X--X 7
@@ -61,7 +63,7 @@ grid pattern:
 48 X--X--X--X--X--X--X--X 55
                         |
 63 X--X--X--X--X--X--X--X 56
-
+ ```
 
 Acknowledgements:
   - Thanks [Andy Doro](https://andydoro.com/) & [Dano Wall](https://github.com/danowall) 
