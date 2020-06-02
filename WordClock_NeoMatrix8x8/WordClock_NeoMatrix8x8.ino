@@ -45,6 +45,7 @@
 // 64-bit "mask" for each pixel in the matrix- is it on or off?
 uint64_t mask;
 
+/* 
 // define masks for each word. we add them with "bitwise or" to generate a mask for the entire "phrase".
 #define MFIVE    mask |= 0xF00000000000        // these are in hexadecimal
 #define MTEN     mask |= 0x5800000000000000
@@ -70,6 +71,35 @@ uint64_t mask;
 #define WIFI     mask = 0x3C0000000
 #define WIFIER   mask = 0x3C0002010
 #define NTPER    mask = 0xC00004000002010
+*/
+
+// For tape LED layout 
+// define masks for each word. we add them with "bitwise or" to generate a mask for the entire "phrase".
+#define MFIVE    mask |= 0xF00000000000        // these are in hexadecimal
+#define MTEN     mask |= 0x5800000000000000
+#define AQUARTER mask |= 0x807F000000000000
+#define TWENTY   mask |= 0x7E00000000000000
+#define HALF     mask |= 0xF0000000000
+#define PAST     mask |= 0x1E00000000
+#define TO       mask |= 0x3000000000
+#define ONE      mask |= 0xC2
+#define TWO      mask |= 0xC002
+#define THREE    mask |= 0xF80000
+#define FOUR     mask |= 0xF
+#define FIVE     mask |= 0xF0000000
+#define SIX      mask |= 0x70000
+#define SEVEN    mask |= 0x10F00
+#define EIGHT    mask |= 0x1F000000
+#define NINE     mask |= 0xF0
+#define TEN      mask |= 0x1800100
+#define ELEVEN   mask |= 0x3F00
+#define TWELVE   mask |= 0xF600
+#define ANDYDORO mask |= 0x8980002100200002
+
+#define WIFI     mask = 0xC0C0000000
+#define WIFIER   mask = 0xC0C0002008
+#define WIFISET  mask = 0xC8D0080000
+#define NTPER    mask = 0xC00000200002008
 
 // define pins
 #define NEOPIN       16  // connect to DIN on NeoPixel
